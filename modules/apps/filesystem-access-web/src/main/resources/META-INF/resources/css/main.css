@@ -1,0 +1,37 @@
+
+/* CSS styling for the filesystem access portlet. */
+
+span.fname-display, span.display-current-path {
+	padding-left: 5px;
+}
+
+div.code-editor, div.code-wrapper {
+	height: 100%;
+	margin: 3px;
+	min-height: 400px;
+	min-width: 400px;
+	width: 100%;
+}
+
+span.div-right {
+	float: right;
+}
+
+span.div-right div {
+	display: inline;
+}
+
+
+/* fix to get the lexicon modal right */
+div.fade.modal.lex-modal {
+	display: none;
+}
+
+div.fade.modal.lex-modal div.modal-dialog {
+	position: relative;
+}
+
+/* Special rule to pad the portlet when displayed in the control panel. */
+div.portlet-boundary.portlet-boundary_com_dnebinger_filesystemaccess_portlet_FilesystemAccessPortlet_.portlet-static.portlet-static-end.decorate {
+	padding: 15px;
+}
