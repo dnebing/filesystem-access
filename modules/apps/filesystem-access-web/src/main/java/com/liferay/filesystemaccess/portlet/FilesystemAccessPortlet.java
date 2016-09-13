@@ -1,4 +1,4 @@
-package com.liferay.filesystemaccess.portlet.portlet;
+package com.liferay.filesystemaccess.portlet;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 

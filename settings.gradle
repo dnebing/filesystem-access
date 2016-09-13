@@ -50,6 +50,3 @@ buildscript {
 
 apply plugin: "com.liferay.workspace"
 
-include 'modules:apps:filesystem-access-api'
-include 'modules:apps:filesystem-access-svc'
-include 'modules:apps:filesystem-access-web'

@@ -1,4 +1,8 @@
 Bundle-Name: Filesystem Access API
-Bundle-SymbolicName: com.liferay.filesystemaccess.api
+Bundle-SymbolicName: com.liferay.filesystem.access.api
 Bundle-Version: 1.0.0
-Export-Package: com.liferay.filesystemaccess.api
+Export-Package:\
+	com.liferay.filesystemaccess.api,\
+	com.liferay.filesystemaccess.audit,\
+	com.liferay.filesystemaccess.util
+-sources: true
