@@ -1,6 +1,7 @@
 package com.liferay.filesystemaccess.portlet.config;
 
 import com.liferay.portal.kernel.settings.definition.ConfigurationBeanDeclaration;
+
 import org.osgi.service.component.annotations.Component;
 
 /**

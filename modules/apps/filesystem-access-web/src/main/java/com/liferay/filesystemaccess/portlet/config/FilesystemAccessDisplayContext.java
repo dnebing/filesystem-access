@@ -12,11 +12,13 @@ import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 
 import javax.portlet.PortletRequest;
+
 import javax.servlet.http.HttpServletRequest;
+
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * class FilesystemAccessDisplayContext: Wrapper for accessing the portlet instance configuration,
@@ -30,7 +32,6 @@ public class FilesystemAccessDisplayContext {
 	 * FilesystemAccessDisplayContext: Default constructor for our component.
 	 */
 	public FilesystemAccessDisplayContext() {
-		super();
 	}
 
 	/**
@@ -38,7 +39,6 @@ public class FilesystemAccessDisplayContext {
 	 * @param req The http request object.
 	 */
 	public FilesystemAccessDisplayContext(final HttpServletRequest req) {
-		super();
 
 		// get the theme display from the request.
 
@@ -54,9 +54,9 @@ public class FilesystemAccessDisplayContext {
 
 		if (Validator.isNull(portletDisplay.getId())) {
 
-			// during action phase it is likely the id will not be set.  This is by
-			// design, these kinds of things are not guaranteed to be properly set
-			// up for the action phase.
+			// during action phase it is likely the id will not be set.  This is
+			// by design, these kinds of things are not guaranteed to be
+			// properly set up for the action phase.
 
 			//
 
@@ -77,19 +77,23 @@ public class FilesystemAccessDisplayContext {
 					configurationProvider.getPortletInstanceConfiguration(
 						FilesystemAccessPortletInstanceConfiguration.class, l,
 						instance);
-			} catch (ConfigurationException e) {
-				logger.error("Error getting instance config.", e);
 			}
-		} else {
+			catch (ConfigurationException ce) {
+				logger.error("Error getting instance config.", ce);
+			}
+		}
+		else {
 
-			// we are in a render or resource phase where portlet display is good.
+			// we are in a render or resource phase where portlet display is
+			// good.
 
 			try {
 				portletInstanceConfig =
 					portletDisplay.getPortletInstanceConfiguration(
 						FilesystemAccessPortletInstanceConfiguration.class);
-			} catch (ConfigurationException e) {
-				logger.error("Error getting portlet instance config.", e);
+			}
+			catch (ConfigurationException ce) {
+				logger.error("Error getting portlet instance config.", ce);
 			}
 		}
 	}
@@ -99,7 +103,17 @@ public class FilesystemAccessDisplayContext {
 	 * @param req The portlet request object.
 	 */
 	public FilesystemAccessDisplayContext(final PortletRequest req) {
-	this(PortalUtil.getHttpServletRequest(req));
+		this(PortalUtil.getHttpServletRequest(req));
+	}
+
+	/**
+	 * getFilesystemAccessPortletInstanceConfiguration: Returns the instance config obj.
+	 * @return FilesystemAccessPortletInstanceConfiguration The instance config object to use.
+	 */
+	public FilesystemAccessPortletInstanceConfiguration
+		getFilesystemAccessPortletInstanceConfiguration() {
+
+		return portletInstanceConfig;
 	}
 
 	/**
@@ -109,22 +123,15 @@ public class FilesystemAccessDisplayContext {
 	@Reference
 	protected void setConfigurationProvider(
 		ConfigurationProvider configurationProvider) {
+
 		this.configurationProvider = configurationProvider;
 	}
 
-	/**
-	 * getFilesystemAccessPortletInstanceConfiguration: Returns the instance config obj.
-	 * @return FilesystemAccessPortletInstanceConfiguration The instance config object to use.
-	 */
-	public FilesystemAccessPortletInstanceConfiguration getFilesystemAccessPortletInstanceConfiguration() {
-		return portletInstanceConfig;
-	}
+	private static final Log logger = LogFactoryUtil.getLog(
+		FilesystemAccessDisplayContext.class);
 
+	private ConfigurationProvider configurationProvider;
 	private FilesystemAccessPortletInstanceConfiguration portletInstanceConfig =
 		null;
 
-	private ConfigurationProvider configurationProvider;
-
-	private static final Log logger = LogFactoryUtil.getLog(
-		FilesystemAccessDisplayContext.class);
 }

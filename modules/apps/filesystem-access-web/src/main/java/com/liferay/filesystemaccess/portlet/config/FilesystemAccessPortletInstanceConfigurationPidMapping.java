@@ -2,6 +2,7 @@ package com.liferay.filesystemaccess.portlet.config;
 
 import com.liferay.filesystemaccess.portlet.FilesystemAccessPortletKeys;
 import com.liferay.portal.kernel.settings.definition.ConfigurationPidMapping;
+
 import org.osgi.service.component.annotations.Component;
 
 /**

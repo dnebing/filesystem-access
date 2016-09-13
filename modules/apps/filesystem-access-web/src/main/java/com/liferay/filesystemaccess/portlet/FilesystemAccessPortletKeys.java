@@ -8,9 +8,10 @@ import com.liferay.filesystemaccess.portlet.config.FilesystemAccessPortletInstan
  */
 public final class FilesystemAccessPortletKeys {
 
+	public static final String CONFIG_ID =
+		FilesystemAccessPortletInstanceConfiguration.class.getName();
+
 	public static final String FILESYSTEM_ACCESS =
 		"com_liferay_filesystemaccess_portlet_FilesystemAccessPortlet";
-
-	public static final String CONFIG_ID = FilesystemAccessPortletInstanceConfiguration.class.getName();
 
 }

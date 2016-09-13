@@ -6,14 +6,16 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.ConfigurationAction;
 import com.liferay.portal.kernel.portlet.DefaultConfigurationAction;
 import com.liferay.portal.kernel.util.ParamUtil;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * class FilesystemAccessConfigurationAction: Configuration action for the filesystem access portlet.
@@ -48,13 +50,15 @@ public class FilesystemAccessPortletInstanceConfigurationAction
 	 */
 	@Override
 	public void processAction(
-		PortletConfig portletConfig, ActionRequest actionRequest,
-		ActionResponse actionResponse)
+			PortletConfig portletConfig, ActionRequest actionRequest,
+			ActionResponse actionResponse)
 		throws Exception {
 
 		// extract all of the parameters from the request.
+
 		String rootPath = ParamUtil.getString(actionRequest, "rootPath");
-		String showPerms = ParamUtil.getString(actionRequest, "showPermissions");
+		String showPerms = ParamUtil.getString(
+			actionRequest, "showPermissions");
 		String deletesAllowed = ParamUtil.getString(
 			actionRequest, "deletesAllowed");
 		String uploadsAllowed = ParamUtil.getString(
@@ -72,6 +76,7 @@ public class FilesystemAccessPortletInstanceConfigurationAction
 			actionRequest, "downloadableFolderItemLimit");
 
 		// lets log them for fun and giggles
+
 		if (_log.isDebugEnabled()) {
 			_log.debug("Configuration setting:");
 			_log.debug("  rootPath = [" + rootPath + "]");
@@ -84,6 +89,7 @@ public class FilesystemAccessPortletInstanceConfigurationAction
 		}
 
 		// Set the preference values
+
 		setPreference(actionRequest, "rootPath", rootPath);
 		setPreference(actionRequest, "showPermissions", showPerms);
 		setPreference(actionRequest, "deletesAllowed", deletesAllowed);
@@ -100,6 +106,7 @@ public class FilesystemAccessPortletInstanceConfigurationAction
 		setPreference(actionRequest, "downloadsAllowed", downloadsAllowed);
 
 		// fall through to the super action for the rest of the handling
+
 		super.processAction(portletConfig, actionRequest, actionResponse);
 	}
 
@@ -109,7 +116,8 @@ public class FilesystemAccessPortletInstanceConfigurationAction
 	 */
 	@Override
 	@Reference(
-		target = "(osgi.web.symbolicname=com.liferay.filesystemaccess.web)", unbind = "-"
+		target = "(osgi.web.symbolicname=com.liferay.filesystemaccess.web)",
+		unbind = "-"
 	)
 	public void setServletContext(ServletContext servletContext) {
 		super.setServletContext(servletContext);

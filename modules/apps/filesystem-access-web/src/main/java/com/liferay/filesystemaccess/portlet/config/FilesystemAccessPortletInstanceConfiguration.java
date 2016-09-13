@@ -1,6 +1,7 @@
 package com.liferay.filesystemaccess.portlet.config;
 
 import aQute.bnd.annotation.metatype.Meta;
+
 import com.liferay.portal.configuration.metatype.annotations.ExtendedObjectClassDefinition;
 
 /**
