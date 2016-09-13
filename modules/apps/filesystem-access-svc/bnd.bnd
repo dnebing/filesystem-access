@@ -1,3 +1,8 @@
-Bundle-SymbolicName: filesystem.access.svc
+Bundle-Name: Filesystem Access Service
+Bundle-SymbolicName: com.liferay.filesystem.access.svc
 Bundle-Version: 1.0.0
-Export-Package: com.liferay.filesystemaccess.svc
+-sources: true
+-dsannotations: *
+Private-Package:\
+	com.liferay.filesystemaccess.svc.internal
+Service-Component: *
