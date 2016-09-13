@@ -1,0 +1,55 @@
+gradle.allprojects {
+    buildscript {
+        repositories {
+            mavenLocal()
+
+            maven {
+                url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public/"
+            }
+
+            maven {
+                url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/repositories/liferay-public-releases/"
+            }
+        }
+
+        dependencies {
+            classpath "com.netflix.nebula:gradle-extra-configurations-plugin:3.1.0"
+        }
+    }
+
+    repositories {
+        mavenLocal()
+
+        maven {
+            url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public/"
+        }
+
+        maven {
+            url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/repositories/liferay-public-releases/"
+        }
+    }
+}
+
+buildscript {
+    dependencies {
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "1.0.40"
+    }
+
+    repositories {
+        mavenLocal()
+
+        maven {
+            url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public/"
+        }
+
+        maven {
+            url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/repositories/liferay-public-releases/"
+        }
+    }
+}
+
+apply plugin: "com.liferay.workspace"
+
+include 'modules:apps:filesystem-access-api'
+include 'modules:apps:filesystem-access-svc'
+include 'modules:apps:filesystem-access-web'
