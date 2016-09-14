@@ -12,14 +12,14 @@ import org.osgi.service.component.annotations.Reference;
  * class FilesystemAccessPanelApp: Component which exposes our portlet as a control panel.
  * @author dnebinger
  */
-//@Component(
-//	immediate = true,
-//	property = {
-//		"panel.app.order:Integer=750",
-//		"panel.category.key=" + PanelCategoryKeys.CONTROL_PANEL_CONFIGURATION
-//	},
-//	service = PanelApp.class
-//)
+@Component(
+	immediate = true,
+	property = {
+		"panel.app.order:Integer=750",
+		"panel.category.key=" + PanelCategoryKeys.CONTROL_PANEL_CONFIGURATION
+	},
+	service = PanelApp.class
+)
 public class FilesystemAccessPanelApp extends BasePanelApp {
 
 	@Override
