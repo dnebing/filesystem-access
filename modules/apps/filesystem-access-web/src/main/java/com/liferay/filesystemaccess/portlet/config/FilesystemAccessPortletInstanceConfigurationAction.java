@@ -56,23 +56,23 @@ public class FilesystemAccessPortletInstanceConfigurationAction
 
 		// extract all of the parameters from the request.
 
-		String rootPath = ParamUtil.getString(actionRequest, "rootPath");
-		String showPerms = ParamUtil.getString(
+		String rootPath = getParameter(actionRequest, "rootPath");
+		String showPerms = getParameter(
 			actionRequest, "showPermissions");
-		String deletesAllowed = ParamUtil.getString(
+		String deletesAllowed = getParameter(
 			actionRequest, "deletesAllowed");
-		String uploadsAllowed = ParamUtil.getString(
+		String uploadsAllowed = getParameter(
 			actionRequest, "uploadsAllowed");
-		String downloadsAllowed = ParamUtil.getString(
+		String downloadsAllowed = getParameter(
 			actionRequest, "downloadsAllowed");
-		String editsAllowed = ParamUtil.getString(
+		String editsAllowed = getParameter(
 			actionRequest, "editsAllowed");
-		String addsAllowed = ParamUtil.getString(actionRequest, "addsAllowed");
-		String viewSizeLimit = ParamUtil.getString(
+		String addsAllowed = getParameter(actionRequest, "addsAllowed");
+		String viewSizeLimit = getParameter(
 			actionRequest, "viewSizeLimit");
-		String downloadableFolderSizeLimit = ParamUtil.getString(
+		String downloadableFolderSizeLimit = getParameter(
 			actionRequest, "downloadableFolderSizeLimit");
-		String downloadableFolderItemLimit = ParamUtil.getString(
+		String downloadableFolderItemLimit = getParameter(
 			actionRequest, "downloadableFolderItemLimit");
 
 		// lets log them for fun and giggles
